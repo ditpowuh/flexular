@@ -1,0 +1,57 @@
+:root {
+  --menubar: #eeeeee;
+  --menubar-highlight: #ffffff;
+  --menubar-hover: #dddddd;
+  --sidebar: #ffffff;
+  --sidebar-option: #eeeeee;
+  --sidebar-option-hover: #dddddd;
+  --sidebar-option-selected: #cccccc;
+  --highlight: #ffffff;
+  --button: #eeeeee;
+  --button-text: #595959;
+  --button-hover: #bbbbbb;
+  --checkbox: #333333;
+  --text: #595959;
+  --extra: #b5b5b5;
+  --background: #cccccc;
+  --divider: #eeeeee;
+}
+
+.link {
+  text-decoration: underline;
+  color: #a1a1a1;
+  transition: all 0.125s;
+  -webkit-backface-visibility: hidden;
+}
+
+.link:hover {
+  text-decoration: underline;
+  color: #b0b0b0;
+}
+
+.link:active {
+  text-decoration: underline;
+  color: #cccccc;
+}
+
+:is(#menubaricon, #closebutton, #resizebutton, #minimisebutton) img {
+  filter: invert(100%);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #b0b0b0;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #333333;
+}

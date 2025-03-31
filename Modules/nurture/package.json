@@ -1,0 +1,12 @@
+{
+  "name": "nurture",
+  "version": "1.0.0",
+  "description": "A self-care app to help you!",
+  "type": "module",
+  "exports": "./index.js",
+  "author": "Ditpowuh",
+  "license": "MIT",
+  "dependencies": {
+    "node-schedule": "^2.1.1"
+  }
+}

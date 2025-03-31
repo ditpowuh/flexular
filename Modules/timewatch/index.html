@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Timewatch</title>
+    <link id="theme" rel="stylesheet" type="text/css" href="../../Main/CSS/light.css">
+    <link rel="stylesheet" href="../../Main/CSS/main.css"></link>
+    <link rel="stylesheet" href="./CSS/stopwatch.css"></link>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+  </head>
+  <body>
+    <div id="menubar" class="wrapper">
+      <ul>
+        <li class="left"><a id="menubaricon"><img src="../../Main/Assets/Puzzle.png"></a></li>
+        <li class="right"><a id="closebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Close.png"></a></li>
+        <li class="right"><a id="resizebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Resize.png"></a></li>
+        <li class="right"><a id="minimisebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Minimise.png"></a></li>
+      </ul>
+    </div>
+    <div id="sidebar">
+      <hr id="top">
+      <br>
+      <ul>
+        <li>Home</li>
+      </ul>
+    </div>
+    <div class="wrapper">
+      <br><br>
+      <h1 id="title">Timewatch</h1>
+      <div id="stopwatches">
+        <!-- <div class="stopwatch">
+          <div class="time monofont">00:00:00.00</div>
+          <div class="units monofont"><span>hours</span><span>minutes</span><span>seconds</span></div>
+          <br><br>
+          <button class="mainbutton">Stop</button>
+          <button class="restartbutton">Restart</button>
+          <button class="deletebutton">Delete</button>
+        </div> -->
+      </div>
+      <button id="addbutton">Add</button>
+    </div>
+    <script src="../../Main/JS/universal.js"></script>
+    <script src="./JS/stopwatch.js"></script>
+  </body>
+</html>

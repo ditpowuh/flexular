@@ -1,0 +1,62 @@
+@font-face {
+  font-family: "Fira Mono";
+  src: url("./FiraMono.ttf");
+}
+
+#stopwatches {
+  max-height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#addbutton {
+  margin-top: 20px;
+}
+
+div.stopwatch {
+  display: inline-block;
+  background-color: #dddddd;
+  border-radius: 10px;
+  padding: 30px 15%;
+  margin: 10px;
+}
+
+div.stopwatch button, #addbutton {
+  background-color: #eeeeee;
+  color: #595959;
+  border: none;
+  width: 90px;
+  padding: 10px 20px;
+  border-radius: 7.5px;
+  font-weight: bold;
+  transition: 0.25s background-color;
+}
+
+div.stopwatch button:hover, #addbutton:hover {
+  background-color: #bbbbbb;
+}
+
+div.time {
+  display: inline-block;
+  font-size: 50px;
+}
+
+div.units {
+  width: 330px;
+  margin: 0 auto;
+  font-size: 12px;
+  text-align: left;
+}
+
+div.units span:nth-child(1) {
+  padding-left: 5px;
+  padding-right: 55px;
+}
+
+div.units span:nth-child(2) {
+  padding-right: 40px;
+}
+
+.monofont {
+  font-family: "Fira Mono", monospace;
+}

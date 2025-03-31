@@ -1,0 +1,23 @@
+{
+  "name": "flexular",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "exports": "./index.js",
+  "workspaces": [
+    "Modules/*"
+  ],
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Ditpowuh",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron/packager": "^18.3.6",
+    "electron": "^35.1.2"
+  },
+  "dependencies": {
+    "electron-store": "^10.0.1",
+    "jquery": "^3.7.1"
+  }
+}

@@ -1,0 +1,84 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("./Quicksand.ttf");
+}
+
+@font-face {
+  font-family: "Fira Mono";
+  src: url("./FiraMono.ttf");
+}
+
+hr#beforetask {
+  border-top: 5px solid #eeeeee;
+  width: 450px;
+  margin-bottom: 15px;
+}
+
+div.enablecheckbox {
+  font-size: 24px;
+}
+
+input[type="checkbox"].enablecheckbox {
+  margin-left: 4px;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  accent-color: var(--checkbox);
+}
+
+.task {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.25);
+  padding: 30px 90px 60px 90px;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 30px;
+}
+
+.task * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.task h2 {
+  display: block;
+  font-size: 32px;
+}
+
+.task #water {
+  width: 40px;
+  font-size: 32px;
+  text-shadow: 0 0 16px rgba(0, 0, 0, 0.75);
+  color: #ffffff;
+}
+
+.task input[type="time"] {
+  font-family: "Fira Mono", monospace;
+  padding: 7.5px;
+  border: none;
+  border-radius: 10px;
+  margin: 0 15px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  color: #666666;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.task input[type="time"]::-webkit-calendar-picker-indicator, .task input[type="time"]::-webkit-inner-spin-button, .task input[type="time"]::-webkit-clear-button {
+  display: none;
+}
+
+.task button.changebutton {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  margin: 0 10px;
+  width: 30px;
+  height: 30px;
+  border: 2px #777777 solid;
+  border-radius: 50%;
+  color: #777777;
+}
+
+.task footer {
+  font-size: 12px;
+}

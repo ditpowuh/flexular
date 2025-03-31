@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Nurture</title>
+    <link id="theme" rel="stylesheet" type="text/css" href="../../Main/CSS/light.css">
+    <link rel="stylesheet" href="../../Main/CSS/main.css"></link>
+    <link rel="stylesheet" href="./CSS/nurture.css"></link>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+  </head>
+  <body>
+    <div id="menubar" class="wrapper">
+      <ul>
+        <li class="left"><a id="menubaricon"><img src="../../Main/Assets/Puzzle.png"></a></li>
+        <li class="right"><a id="closebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Close.png"></a></li>
+        <li class="right"><a id="resizebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Resize.png"></a></li>
+        <li class="right"><a id="minimisebutton" class="menubuttons"><img src="../../Main/Assets/Icons/Minimise.png"></a></li>
+      </ul>
+    </div>
+    <div id="sidebar">
+      <hr id="top">
+      <br>
+      <ul>
+        <li>Home</li>
+      </ul>
+    </div>
+    <div class="wrapper">
+      <br><br>
+      <h1 id="title">Nurture</h1>
+      <br>
+      <hr id="beforetask">
+      <div class="task">
+        <h2>Drink Water!</h2>
+        <span>A notification will remind you every</span>
+        <button id="reduceminute" class="changebutton">&lt;</button><div id="water">30</div><button id="increaseminute" class="changebutton">&gt;</button>
+        <span>minute(s)!</span>
+        <br><br><br>
+        <span>From</span><input id="starttime" type="time" step="3600" value="07:00"><span>to</span><input id="endtime" type="time" step="3600" value="23:00"><span>*</span>
+        <br><br><br>
+        <div class="enablecheckbox">Enabled:</div>
+        <input id="waterenabled" class="enablecheckbox" type="checkbox">
+        <br><br>
+        <footer>*12 AM to 11 PM for full day.</footer>
+      </div>
+    </div>
+    <script src="../../Main/JS/universal.js"></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>

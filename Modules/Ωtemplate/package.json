@@ -1,0 +1,10 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "This is an example template.",
+  "type": "module",
+  "exports": "./index.js",
+  "author": "Ditpowuh",
+  "license": "MIT",
+  "dependencies": {}
+}

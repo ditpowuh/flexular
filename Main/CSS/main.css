@@ -1,0 +1,212 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  padding-top: 32px;
+  overflow: hidden;
+  -webkit-user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+h1#title {
+  font-size: 42px;
+}
+
+button {
+  cursor: pointer;
+}
+
+hr {
+  border-top: 3px solid var(--divider);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-radius: 5px;
+  width: 75%;
+}
+
+#menubar {
+  z-index: 100;
+  width: 100%;
+  background-color: var(--menubar);
+  -webkit-app-region: drag;
+}
+
+#menubar {
+  text-align: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+#menubar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#menubar ul li {
+  -webkit-user-select: none;
+  -webkit-app-region: none;
+}
+
+#menubar ul li.left {
+  float: left;
+}
+
+#menubar ul li.right {
+  float: right;
+}
+
+#menubar ul li a {
+  display: block;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.375s;
+}
+
+#menubar ul li a#menubaricon {
+  height: 45.5px;
+  background-color: var(--menubar-highlight);
+  transition: background-color 0.375s;
+}
+
+#menubar ul li a#menubaricon:hover {
+  background-color: var(--menubar-hover);
+}
+
+#menubar ul li a#menubaricon img {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+#menubar ul li a.menubuttons {
+  padding-top: 10px;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-bottom: 7.5px;
+  text-decoration: none;
+  background-color: var(--menubar-highlight);
+}
+
+#menubar ul li a.menubuttons img {
+  height: 25px;
+  width: 25px;
+}
+
+#menubar ul li a:hover {
+  background-color: var(--menubar-hover);
+}
+
+#sidebar {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  background-color: var(--sidebar);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: width 0.5s;
+}
+
+#sidebar hr#top {
+  margin-top: 80px;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#sidebar ul li {
+  background-color: var(--sidebar-option);
+  display: block;
+  padding: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.25s background-color;
+}
+
+#sidebar ul li:hover {
+  background-color: var(--sidebar-option-hover);
+}
+
+#sidebar ul li:first-child {
+  margin-bottom: 35px;
+}
+
+#sidebar ul li.selected {
+  background-color: var(--sidebar-option-selected);
+}
+
+#settings {
+  text-align: left;
+  background-color: color-mix(in srgb, var(--highlight) 30%, transparent);
+  width: 400px;
+  margin: 0 auto;
+  border: 3px var(--highlight) solid;
+  border-radius: 5px;
+  padding: 25px 50px;
+}
+
+#settings h2 {
+  text-align: center;
+}
+
+#settings button {
+  display: block;
+  margin: 10px auto;
+  background-color: var(--button);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 7.5px;
+  font-weight: bold;
+  transition: 0.25s background-color;
+}
+
+#settings button:hover {
+  background-color: var(--button-hover);
+}
+
+#settings input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  vertical-align: -2px;
+  accent-color: var(--checkbox);
+}
+
+#settings footer {
+  text-align: center;
+  font-size: 12px;
+}
+
+.selectable {
+  -webkit-user-select: text;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+:focus {
+  outline: unset;
+}
