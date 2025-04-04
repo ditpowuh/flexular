@@ -31,20 +31,26 @@ function setDefaultSettings() {
   });
 }
 
-if (!store.has("settings")) {
-  setDefaultSettings();
-}
-
-const createWindowAndTray = () => {
-
+function registerShortcuts() {
   globalShortcut.register("Control+Q", () => {
     app.isQuiting = true;
     app.quit();
   });
   globalShortcut.register("Control+Shift+R", () => {
-    app.relaunch()
-    app.exit()
+    app.relaunch();
+    app.exit();
   });
+}
+
+function unregisterShortcuts() {
+  globalShortcut.unregisterAll();
+}
+
+if (!store.has("settings")) {
+  setDefaultSettings();
+}
+
+const createWindowAndTray = () => {
 
   const window = new BrowserWindow({
     width: store.get("settings.window.width") || 1280,
@@ -155,6 +161,14 @@ const createWindowAndTray = () => {
     });
   });
 
+  window.on("focus", () => {
+    registerShortcuts();
+  });
+
+  window.on("blur", () => {
+    unregisterShortcuts();
+  });
+
 };
 
 app.whenReady().then(() => {
@@ -168,7 +182,7 @@ app.on("window-all-closed", () => {
 });
 
 app.on("will-quit", () => {
-  globalShortcut.unregisterAll();
+  unregisterShortcuts();
 });
 
 app.on("activate", () => {
