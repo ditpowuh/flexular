@@ -1,6 +1,6 @@
 {
   "name": "timewatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A stopwatch app that lets you track multiple timers independently.",
   "type": "module",
   "exports": "./index.js",
