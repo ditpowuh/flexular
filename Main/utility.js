@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const generateNotification = (title, body, icon, clickFunction) => {
-  if (clickFunction !== undefined || typeof clickFunction != "function") {
+  if (clickFunction !== undefined && typeof clickFunction == "function") {
     let notification = new Notification({
       title: title,
       body: body,
