@@ -187,6 +187,12 @@ hr {
   background-color: var(--button-hover);
 }
 
+#settings select {
+  border: none;
+  padding: 1px;
+  border-radius: 2.5px;
+}
+
 #settings input[type="checkbox"] {
   width: 15px;
   height: 15px;
