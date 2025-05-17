@@ -36,6 +36,19 @@ div.stopwatch button:hover, #addbutton:hover {
   background-color: #bbbbbb;
 }
 
+div.stopwatch button.clearbutton {
+  width: 75px;
+  padding: 5px 0;
+  border-radius: 7.5px;
+}
+
+div.stopwatch input.tag {
+  width: 120px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
 div.time {
   display: inline-block;
   font-size: 50px;

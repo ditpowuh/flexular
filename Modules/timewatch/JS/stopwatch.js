@@ -10,6 +10,9 @@ function addStopwatch(stopwatchData = {}) {
       <button class="mainbutton">Start</button>
       <button class="restartbutton">Restart</button>
       <button class="deletebutton">Delete</button>
+      <br><br>
+      <input class="tag" type="text" placeholder="Tag" maxlength="20" spellcheck="false">
+      <button class="clearbutton">Clear</button>
     </div>
   `);
   const latestStopwatch = $("#stopwatches .stopwatch").last();
@@ -18,12 +21,15 @@ function addStopwatch(stopwatchData = {}) {
     elapsedTime: stopwatchData.elapsedTime || 0,
     interval: stopwatchData.interval || null,
     running: stopwatchData.running || false,
+    tag : stopwatchData.tag || "",
     elements: {
       time: latestStopwatch.find(".time"),
       units: latestStopwatch.find(".units"),
       mainbutton: latestStopwatch.find(".mainbutton"),
       restartbutton: latestStopwatch.find(".restartbutton"),
-      deletebutton: latestStopwatch.find(".deletebutton")
+      deletebutton: latestStopwatch.find(".deletebutton"),
+      taginput: latestStopwatch.find(".tag"),
+      cleartagbutton: latestStopwatch.find(".clearbutton")
     },
     toggle: function() {
       const self = this;
@@ -81,6 +87,17 @@ $(document).on("click", ".stopwatch .deletebutton", function() {
   $(".stopwatch").eq(index).remove();
 });
 
+$(document).on("change", ".stopwatch .tag", function() {
+  let index = $(".stopwatch .tag").index(this);
+  stopwatches[index].tag = stopwatches[index].elements.taginput.val();
+});
+
+$(document).on("click", ".stopwatch .clearbutton", function() {
+  let index = $(".stopwatch .clearbutton").index(this);
+  stopwatches[index].tag = "";
+  stopwatches[index].elements.taginput.val("");
+});
+
 window.addEventListener("beforeunload", (event) => {
   let cleanedStopwatches = [...stopwatches];
   for (let i = 0; i < cleanedStopwatches.length; i++) {
@@ -99,7 +116,7 @@ ipc.on("LoadStopwatches", (event, loadedStopwatches) => {
   for (let i = 0; i < loadedStopwatches.length; i++) {
 
     addStopwatch(loadedStopwatches[i]);
-    
+
     let index = stopwatches.length - 1;
 
     let milliseconds = Math.floor((stopwatches[index].elapsedTime % 1000) / 10);
@@ -113,5 +130,6 @@ ipc.on("LoadStopwatches", (event, loadedStopwatches) => {
     hours = hours < 10 ? "0" + hours : hours;
 
     stopwatches[index].elements.time.html(`${hours}:${minutes}:${seconds}.${milliseconds}`);
+    stopwatches[index].elements.taginput.val(stopwatches[index].tag);
   }
 });
