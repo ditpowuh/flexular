@@ -47,6 +47,7 @@ div.stopwatch input.tag {
   padding: 5px;
   border: none;
   border-radius: 5px;
+  text-align: center;
 }
 
 div.time {
