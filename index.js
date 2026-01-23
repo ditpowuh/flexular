@@ -81,13 +81,6 @@ const createWindowAndTray = () => {
     });
   }
 
-  window.on("close", function(event) {
-    if (!app.isQuiting) {
-      event.preventDefault();
-      window.hide();
-    }
-  });
-
   const tray = new Tray(path.join(__dirname, "Main/Icon.png"));
   const contextMenu = Menu.buildFromTemplate([
     {
@@ -159,6 +152,10 @@ const createWindowAndTray = () => {
       height: windowSize[1],
       fullscreen: fullscreenState
     });
+    if (!app.isQuiting) {
+      event.preventDefault();
+      window.hide();
+    }
   });
 
   window.on("focus", () => {
@@ -176,7 +173,7 @@ app.whenReady().then(() => {
 });
 
 app.on("window-all-closed", () => {
-  if (process.platform !== "DARWIN".toLowerCase()) {
+  if (process.platform !== "darwin") {
     app.quit();
   }
 });
