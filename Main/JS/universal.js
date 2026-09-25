@@ -64,7 +64,7 @@ ipc.on("ModulesList", (event, modules) => {
 
 });
 
-var sidebar = false;
+let sidebar = false;
 
 function toggleSidebar() {
   if (sidebar === true) {

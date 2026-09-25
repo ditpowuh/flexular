@@ -1,7 +1,7 @@
 const availableMinutes = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60];
 const defaultMinutes = availableMinutes.indexOf(30);
 
-var currentSelectedMinutes = defaultMinutes;
+let currentSelectedMinutes = defaultMinutes;
 ipc.send("GetNurtureData");
 
 function updateWaterReminder() {

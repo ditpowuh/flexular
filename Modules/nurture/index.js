@@ -9,7 +9,7 @@ const store = new Store();
 
 const WATER_ICON = "Modules/nurture/Icons/Water Bottle.png";
 
-var waterReminder = null;
+let waterReminder = null;
 
 ipc.on("GetNurtureData", (event) => {
   if (store.get("nurture")) {

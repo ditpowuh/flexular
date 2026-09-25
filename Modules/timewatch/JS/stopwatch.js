@@ -1,4 +1,4 @@
-var stopwatches = [];
+let stopwatches = [];
 ipc.send("GetStopwatches");
 
 function addStopwatch(stopwatchData = {}) {
