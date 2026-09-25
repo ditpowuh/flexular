@@ -13,11 +13,11 @@
   "author": "Ditpowuh",
   "license": "MIT",
   "devDependencies": {
-    "@electron/packager": "^18.4.4",
-    "electron": "^37.6.1"
+    "@electron/packager": "^20.3.0",
+    "electron": "^44.4.5"
   },
   "dependencies": {
-    "electron-store": "^10.1.0",
+    "electron-store": "^11.0.2",
     "jquery": "^4.0.0"
   }
 }
