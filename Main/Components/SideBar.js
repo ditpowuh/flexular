@@ -1,5 +1,6 @@
 import {LitElement, html, css} from "lit";
 import {styleMap} from "lit/directives/style-map.js";
+import {classMap} from "lit/directives/class-map.js";
 import {StateController} from "@lit-app/state";
 
 import {globalStyles} from "@main/CSS/global.js";
@@ -11,45 +12,50 @@ export class SideBar extends LitElement {
   };
 
   static styles = [globalStyles, css`
-    #sidebar {
+    .sidebar {
+      background: var(--sidebar);
       position: fixed;
       height: 100%;
-      width: 0;
-      background-color: var(--sidebar);
       z-index: 1;
       top: 0;
       left: 0;
       overflow-x: hidden;
-      transition: width 0.5s;
+      transition: width 0.5s cubic-bezier(0, 0, 0, 1);
     }
 
-    #sidebar hr#top {
-      margin-top: 80px;
+    .sidebar hr {
+      margin-top: 6em;
+      border-top: 0.25em solid var(--divider);
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      border-radius: 0.25em;
+      width: 75%;
     }
 
-    #sidebar ul {
+    .sidebar ul {
       list-style-type: none;
       padding-left: 0;
     }
 
-    #sidebar ul li {
-      background-color: var(--sidebar-option);
+    .sidebar ul li {
+      background: var(--sidebar-option);
       display: block;
       padding: 20px;
       font-size: 20px;
       cursor: pointer;
-      transition: 0.25s background-color;
+      transition: 0.25s background;
     }
 
-    #sidebar ul li:hover {
+    .sidebar ul li:hover {
       background-color: var(--sidebar-option-hover);
     }
 
-    #sidebar ul li:first-child {
-      margin-bottom: 35px;
+    .sidebar ul li:first-child {
+      margin-bottom: 1em;
     }
 
-    #sidebar ul li.selected {
+    .sidebar ul li.selected {
       background-color: var(--sidebar-option-selected);
     }
   `];
@@ -84,7 +90,10 @@ export class SideBar extends LitElement {
   async goToPage(name) {
     try {
       const {tag} = await import(`@modules/${name}/component.js`);
-      appState.page = tag;
+      appState.page = {
+        name,
+        tag
+      };
       appState.sidebar = false;
     }
     catch (error) {
@@ -97,13 +106,26 @@ export class SideBar extends LitElement {
       width: appState.sidebar ? "25%" : "0"
     };
 
+    const homeClasses = {
+      "selected": appState.page === null
+    };
+
     return html`
-      <div id="sidebar" style=${styleMap(sidebarWidthStyle)}>
-        <hr id="top/">
-        <br/>
+      <div class="sidebar" style="${styleMap(sidebarWidthStyle)}">
+        <hr>
         <ul>
-          <li @click=${this.goHome}>Home</li>
-          ${this.modules.map((item) => html`<li @click=${() => this.goToPage(item)}>${item}</li>`)}
+          <li class="${classMap(homeClasses)}" @click=${this.goHome}>Home</li>
+          ${this.modules.map((item) => {
+            const itemClasses = {
+              "selected": appState.page?.name === item
+            };
+
+            return html`
+              <li class="${classMap(itemClasses)}" @click=${() => this.goToPage(item)}>
+                ${item}
+              </li>
+            `;
+          })}
         </ul>
       </div>
     `;

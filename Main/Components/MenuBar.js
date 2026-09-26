@@ -25,6 +25,9 @@ export class MenuBar extends LitElement {
 
     .menuicon {
       background: var(--menubar-highlight);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 3em;
       width: 3em;
       cursor: pointer;
@@ -38,8 +41,8 @@ export class MenuBar extends LitElement {
     }
 
     .menuicon img {
-      width: 100%;
-      height: 100%;
+      width: 75%;
+      height: 75%;
     }
 
     .menubutton {
@@ -59,8 +62,8 @@ export class MenuBar extends LitElement {
     }
 
     .menubutton img {
-      width: 2em;
-      height: 2em;
+      width: 1.5em;
+      height: 1.5em;
     }
 
     @container style(--menubar-invert-icons: 1) {

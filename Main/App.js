@@ -23,7 +23,7 @@ export class App extends LitElement {
       `;
     }
     else {
-      const tag = unsafeStatic(appState.page);
+      const tag = unsafeStatic(appState.page.tag);
       currentModule = staticHtml`
         <${tag}></${tag}>
       `;

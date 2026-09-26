@@ -6,53 +6,55 @@ import {globalStyles} from "@main/CSS/global.js";
 
 export class IndexModule extends LitElement {
   static styles = [globalStyles, css`
-    #settings {
+    .settings {
       text-align: left;
       background-color: color-mix(in srgb, var(--highlight) 30%, transparent);
-      width: 400px;
+      width: 32em;
       margin: 0 auto;
-      border: 3px var(--highlight) solid;
-      border-radius: 5px;
-      padding: 25px 50px;
+      border: 0.25em var(--highlight) solid;
+      border-radius: 1em;
+      padding: 2em 2em;
     }
 
-    #settings h2 {
+    .settings .minititle {
+      font-size: 2em;
       text-align: center;
     }
 
-    #settings button {
+    .settings button {
       display: block;
-      margin: 10px auto;
-      background-color: var(--button);
+      margin: 0.5em auto;
+      background: var(--button);
       color: var(--button-text);
       border: none;
-      padding: 10px 20px;
-      border-radius: 7.5px;
+      padding: 1em 1.5em;
+      border-radius: 1em;
       font-weight: bold;
       cursor: pointer;
-      transition: 0.25s background-color;
+      transition: 0.25s background;
     }
 
-    #settings button:hover {
+    .settings button:hover {
       background-color: var(--button-hover);
     }
 
-    #settings select {
+    .settings select {
       border: none;
-      padding: 1px;
-      border-radius: 2.5px;
+      padding: 0.25em;
+      border-radius: 0.25em;
     }
 
-    #settings input[type="checkbox"] {
-      width: 15px;
-      height: 15px;
+    .settings input[type="checkbox"] {
+      width: 1rem;
+      height: 1rem;
       vertical-align: -2px;
       accent-color: var(--checkbox);
     }
 
-    #settings footer {
+    .settings footer {
+      margin: 1rem 0;
       text-align: center;
-      font-size: 12px;
+      font-size: 0.75em;
     }
   `];
 
@@ -108,34 +110,28 @@ export class IndexModule extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <br><br>
-        <h1 id="title">Home</h1>
+        <h1 class="defaulttitle">Home</h1>
         <p>Click the top-left icon to open the sidebar and access apps.</p>
         <br>
-        <div id="settings">
-          <h2>Settings For Flexular</h2>
-
-          <span>Theme: </span>
-          <select id="themeselection" name="Theme" @change=${this.onThemeSettingChange}>
-            <option value="light">Light</option>
-          </select>
-
-          <br>
-
-          <span>Start With App in Tray*: </span>
-          <input id="startontray" type="checkbox" @change=${this.onStartInTraySettingChange}>
-
-          <br>
-
-          <span>Developer Mode*: </span>
-          <input id="developermode" type="checkbox" @change=${this.onDeveloperModeSettingChange}>
-
-          <br><br>
+        <div class="settings">
+          <h2 class="minititle">Settings For Flexular</h2>
+          <div>
+            <span>Theme: </span>
+            <select id="themeselection" name="Theme" @change=${this.onThemeSettingChange}>
+              <option value="light">Light</option>
+            </select>
+          </div>
+          <div>
+            <span>Start With App in Tray*: </span>
+            <input id="startontray" type="checkbox" @change=${this.onStartInTraySettingChange}>
+          </div>
+          <div>
+            <span>Developer Mode*: </span>
+            <input id="developermode" type="checkbox" @change=${this.onDeveloperModeSettingChange}>
+          </div>
           <footer>*Setting requires app restart.</footer>
-          <br>
           <button id="reset" @click=${this.resetSettings}>Reset Settings To Default</button>
           <button id="clear" @click=${this.clearAllData}>Clear All Data</button>
-          <br>
         </div>
       </div>
     `;

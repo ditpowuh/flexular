@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -15,25 +19,4 @@ body {
 img {
   -webkit-user-drag: none;
   -webkit-user-select: none;
-}
-
-h1#title {
-  font-size: 42px;
-}
-
-button {
-  cursor: pointer;
-}
-
-hr {
-  border-top: 3px solid var(--divider);
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-  border-radius: 5px;
-  width: 75%;
-}
-
-:focus {
-  outline: unset;
 }
