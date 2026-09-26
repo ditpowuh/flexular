@@ -5,9 +5,7 @@ const ipc = ipcMain;
 const store = new Store();
 
 ipc.on("GetStopwatches", (event) => {
-  if (store.has("timewatch.stopwatches")) {
-    event.sender.send("LoadStopwatches", store.get("timewatch.stopwatches"));
-  }
+  event.sender.send("LoadStopwatches", store.get("timewatch.stopwatches", []));
 });
 
 ipc.on("SaveStopwatches", (event, stopwatches) => {
