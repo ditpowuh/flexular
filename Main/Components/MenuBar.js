@@ -5,89 +5,66 @@ import {appState} from "@main/AppState.js";
 
 export class MenuBar extends LitElement {
   static styles = [globalStyles, css`
-    #menubar {
-      z-index: 100;
+    .menubar {
+      background: var(--menubar);
+      position: fixed;
+      display: flex;
+      justify-content: space-between;
       width: 100%;
-      background-color: var(--menubar);
+      height: 3em;
+      top: 0;
+      left: 0;
+      z-index: 100;
       -webkit-app-region: drag;
     }
 
-    #menubar {
-      text-align: center;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      right: 0;
+    .left, .right {
+      display: flex;
+      flex-direction: row;
     }
 
-    #menubar ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    #menubar ul li {
+    .menuicon {
+      background: var(--menubar-highlight);
+      height: 3em;
+      width: 3em;
+      cursor: pointer;
+      transition: background 0.25s;
       -webkit-user-select: none;
       -webkit-app-region: none;
     }
 
-    #menubar ul li.left {
-      float: left;
+    .menuicon:hover {
+      background: var(--menubar-hover);
     }
 
-    #menubar ul li.right {
-      float: right;
+    .menuicon img {
+      width: 100%;
+      height: 100%;
     }
 
-    #menubar ul li a {
-      display: block;
-      font-size: 15px;
-      font-weight: bold;
-      text-align: center;
-      text-decoration: none;
+    .menubutton {
+      background: var(--menubar-highlight);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 6em;
       cursor: pointer;
-      transition: background-color 0.375s;
+      transition: background 0.25s;
+      -webkit-user-select: none;
+      -webkit-app-region: none;
     }
 
-    #menubar ul li a#menubaricon {
-      height: 45.5px;
-      background-color: var(--menubar-highlight);
-      transition: background-color 0.375s;
+    .menubutton:hover {
+      background: var(--menubar-hover);
     }
 
-    #menubar ul li a#menubaricon:hover {
-      background-color: var(--menubar-hover);
-    }
-
-    #menubar ul li a#menubaricon img {
-      padding-left: 5px;
-      padding-right: 5px;
-      padding-top: 2px;
-      height: 40px;
-      width: 40px;
-    }
-
-    #menubar ul li a.menubuttons {
-      padding-top: 10px;
-      padding-right: 40px;
-      padding-left: 40px;
-      padding-bottom: 7.5px;
-      text-decoration: none;
-      background-color: var(--menubar-highlight);
-    }
-
-    #menubar ul li a.menubuttons img {
-      height: 25px;
-      width: 25px;
-    }
-
-    #menubar ul li a:hover {
-      background-color: var(--menubar-hover);
+    .menubutton img {
+      width: 2em;
+      height: 2em;
     }
 
     @container style(--menubar-invert-icons: 1) {
-      :is(#menubaricon, #closebutton, #resizebutton, #minimisebutton) img {
+      .menuicon img, .menubutton img {
         filter: invert(100%);
       }
     }
@@ -115,29 +92,23 @@ export class MenuBar extends LitElement {
 
   render() {
     return html`
-      <div id="menubar" class="wrapper">
-        <ul>
-          <li class="left">
-            <a id="menubaricon" @click=${this.toggleSidebar}>
-              <img src="../Main/Assets/Puzzle.png"/>
-            </a>
-          </li>
-          <li class="right">
-            <a id="closebutton" class="menubuttons" @click=${this.closeApp}>
-              <img src="../Main/Assets/Icons/Close.png"/>
-            </a>
-          </li>
-          <li class="right">
-            <a id="resizebutton" class="menubuttons" @click=${this.resizeApp}>
-              <img src="../Main/Assets/Icons/Resize.png"/>
-            </a>
-          </li>
-          <li class="right">
-            <a id="minimisebutton" class="menubuttons" @click=${this.minimiseApp}>
-              <img src="../Main/Assets/Icons/Minimise.png"/>
-            </a>
-          </li>
-        </ul>
+      <div class="menubar">
+        <div class="left">
+          <div class="menuicon" @click=${this.toggleSidebar}>
+            <img src="../Main/Assets/Puzzle.png"/>
+          </div>
+        </div>
+        <div class="right">
+          <div class="menubutton" @click=${this.minimiseApp}>
+            <img src="../Main/Assets/Icons/Minimise.png"/>
+          </div>
+          <div class="menubutton" @click=${this.resizeApp}>
+            <img src="../Main/Assets/Icons/Resize.png"/>
+          </div>
+          <div class="menubutton" @click=${this.closeApp}>
+            <img src="../Main/Assets/Icons/Close.png"/>
+          </div>
+        </div>
       </div>
     `;
   }
