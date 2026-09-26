@@ -2,12 +2,14 @@ import {State} from "@lit-app/state";
 
 class AppState extends State {
   static properties = {
-    sidebar: {}
+    sidebar: {},
+    page: {}
   };
 
   constructor() {
     super();
     this.sidebar = false;
+    this.page = null;
   }
 }
 

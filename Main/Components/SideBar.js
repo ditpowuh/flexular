@@ -6,6 +6,10 @@ import {globalStyles} from "@main/CSS/global.js";
 import {appState} from "@main/AppState.js";
 
 export class SideBar extends LitElement {
+  static properties = {
+    modules: {type: Array}
+  };
+
   static styles = [globalStyles, css`
     #sidebar {
       position: fixed;
@@ -52,6 +56,7 @@ export class SideBar extends LitElement {
 
   constructor() {
     super();
+    this.handleModules = this.handleModules.bind(this);
     this.appState = new StateController(this, appState);
     this.modules = [];
     ipc.send("GetModules");
@@ -71,6 +76,22 @@ export class SideBar extends LitElement {
     this.modules = modules;
   }
 
+  goHome() {
+    appState.page = null;
+    appState.sidebar = false;
+  }
+
+  async goToPage(name) {
+    try {
+      const {tag} = await import(`@modules/${name}/component.js`);
+      appState.page = tag;
+      appState.sidebar = false;
+    }
+    catch (error) {
+      console.error(`Failed to load module "${name}":`, error);
+    }
+  }
+
   render() {
     const sidebarWidthStyle = {
       width: appState.sidebar ? "25%" : "0"
@@ -81,7 +102,8 @@ export class SideBar extends LitElement {
         <hr id="top/">
         <br/>
         <ul>
-          <li>Home</li>
+          <li @click=${this.goHome}>Home</li>
+          ${this.modules.map((item) => html`<li @click=${() => this.goToPage(item)}>${item}</li>`)}
         </ul>
       </div>
     `;

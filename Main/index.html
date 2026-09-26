@@ -10,6 +10,7 @@
       {
         "imports": {
           "@main/": "./",
+          "@modules/": "../Modules/",
           "lit": "../node_modules/lit/index.js",
           "lit/": "../node_modules/lit/",
           "lit-html": "../node_modules/lit-html/lit-html.js",
@@ -25,14 +26,12 @@
         }
       }
     </script>
-    <script type="module" src="../Main/Components/MenuBar.js"></script>
-    <script type="module" src="../Main/Components/SideBar.js"></script>
-    <script type="module" src="Index.js"></script>
+    <script type="module" src="./Components/MenuBar.js"></script>
+    <script type="module" src="./Components/SideBar.js"></script>
+    <script type="module" src="./App.js"></script>
   </head>
   <body>
-    <menu-bar></menu-bar>
-    <side-bar></side-bar>
-    <index-module></index-module>
+    <main-app></main-app>
     <script src="../Main/JS/global.js"></script>
   </body>
 </html>
