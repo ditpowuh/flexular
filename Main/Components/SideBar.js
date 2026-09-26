@@ -83,22 +83,11 @@ export class SideBar extends LitElement {
   }
 
   goHome() {
-    appState.page = null;
-    appState.sidebar = false;
+    appState.goHome();
   }
 
   async goToPage(name) {
-    try {
-      const {tag} = await import(`@modules/${name}/component.js`);
-      appState.page = {
-        name,
-        tag
-      };
-      appState.sidebar = false;
-    }
-    catch (error) {
-      console.error(`Failed to load module "${name}":`, error);
-    }
+    await appState.goToPage(name);
   }
 
   render() {
