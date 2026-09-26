@@ -35,8 +35,7 @@
       "preload.js",
       "index.js",
       "Main/**/*",
-      "Modules/**/*",
-      "nodule_modules/**/*"
+      "Modules/**/*"
     ],
     "win": {
       "target": ["dir"],
