@@ -8,7 +8,8 @@
     "Modules/*"
   ],
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-builder"
   },
   "author": "Ditpowuh",
   "license": "MIT",
@@ -23,5 +24,33 @@
   },
   "allowScripts": {
     "electron-winstaller@5.4.0": true
+  },
+  "build": {
+    "appId": "com.ditpowuh.flexular",
+    "productName": "Flexular",
+    "asar": false,
+    "files": [
+      "package.json",
+      "LICENSE.md",
+      "preload.js",
+      "index.js",
+      "Main/**/*",
+      "Modules/**/*",
+      "nodule_modules/**/*"
+    ],
+    "win": {
+      "target": ["dir"],
+      "icon": "Main/Icon.png"
+    },
+    "mac": {
+      "target": ["dir"]
+    },
+    "linux": {
+      "target": ["dir"],
+      "icon": "Main/Icon.png"
+    },
+    "directories": {
+      "output": "output"
+    }
   }
 }
