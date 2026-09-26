@@ -2,6 +2,7 @@
   --menubar: #eeeeee;
   --menubar-highlight: #ffffff;
   --menubar-hover: #dddddd;
+  --menubar-invert-icons: 1;
   --sidebar: #ffffff;
   --sidebar-option: #eeeeee;
   --sidebar-option-hover: #dddddd;
@@ -32,10 +33,6 @@
 .link:active {
   text-decoration: underline;
   color: #cccccc;
-}
-
-:is(#menubaricon, #closebutton, #resizebutton, #minimisebutton) img {
-  filter: invert(100%);
 }
 
 ::-webkit-scrollbar {

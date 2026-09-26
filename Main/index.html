@@ -1,60 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>Flexular</title>
     <link id="theme" rel="stylesheet" type="text/css" href="../Main/CSS/light.css">
     <link rel="stylesheet" href="../Main/CSS/main.css"></link>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <script type="importmap">
+      {
+        "imports": {
+          "@main/": "./",
+          "lit": "../node_modules/lit/index.js",
+          "lit/": "../node_modules/lit/",
+          "lit-html": "../node_modules/lit-html/lit-html.js",
+          "lit-html/": "../node_modules/lit-html/",
+          "lit-element": "../node_modules/lit-element/index.js",
+          "lit-element/": "../node_modules/lit-element/",
+          "@lit/reactive-element": "../node_modules/@lit/reactive-element/reactive-element.js",
+          "@lit/reactive-element/": "../node_modules/@lit/reactive-element/",
+          "@lit-labs/ssr-dom-shim": "../node_modules/@lit-labs/ssr-dom-shim/index.js",
+          "@lit-labs/ssr-dom-shim/": "../node_modules/@lit-labs/ssr-dom-shim/",
+          "@lit-app/state": "../node_modules/@lit-app/state/src/index.js",
+          "@lit-app/state/": "../node_modules/@lit-app/state/"
+        }
+      }
+    </script>
+    <script type="module" src="../Main/Components/MenuBar.js"></script>
+    <script type="module" src="../Main/Components/SideBar.js"></script>
+    <script type="module" src="Index.js"></script>
   </head>
   <body>
-    <div id="menubar" class="wrapper">
-      <ul>
-        <li class="left"><a id="menubaricon"><img src="../Main/Assets/Puzzle.png"></a></li>
-        <li class="right"><a id="closebutton" class="menubuttons"><img src="../Main/Assets/Icons/Close.png"></a></li>
-        <li class="right"><a id="resizebutton" class="menubuttons"><img src="../Main/Assets/Icons/Resize.png"></a></li>
-        <li class="right"><a id="minimisebutton" class="menubuttons"><img src="../Main/Assets/Icons/Minimise.png"></a></li>
-      </ul>
-    </div>
-    <div id="sidebar">
-      <hr id="top">
-      <br>
-      <ul>
-        <li>Home</li>
-      </ul>
-    </div>
-    <div class="wrapper">
-      <br><br>
-      <h1 id="title">Home</h1>
-      <p>Click the top-left icon to open the sidebar and access apps.</p>
-      <br>
-      <div id="settings">
-        <h2>Settings For Flexular</h2>
-
-        <span>Theme: </span>
-        <select id="themeselection" name="Theme">
-          <option value="light">Light</option>
-        </select>
-
-        <br>
-
-        <span>Start With App in Tray*: </span>
-        <input id="startontray" type="checkbox">
-
-        <br>
-
-        <span>Developer Mode*: </span>
-        <input id="developermode" type="checkbox">
-
-        <br><br>
-        <footer>*Setting requires app restart.</footer>
-        <br>
-        <button id="reset">Reset Settings To Default</button>
-        <button id="clear">Clear All Data</button>
-        <br>
-      </div>
-    </div>
-    <script src="../Main/JS/universal.js"></script>
-    <script src="./JS/main.js"></script>
+    <menu-bar></menu-bar>
+    <side-bar></side-bar>
+    <index-module></index-module>
+    <script src="../Main/JS/global.js"></script>
   </body>
 </html>
