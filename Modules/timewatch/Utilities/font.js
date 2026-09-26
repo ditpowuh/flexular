@@ -1,11 +1,11 @@
-import {css} from "lit";
+import {css, unsafeCSS} from "lit";
 
 const fontSheet = new CSSStyleSheet();
 
 fontSheet.replaceSync(css`
   @font-face {
     font-family: "Fira Mono";
-    src: url("${new URL("../Fonts/FiraMono.ttf", import.meta.url)}");
+    src: url("${unsafeCSS(new URL("../Fonts/FiraMono.ttf", import.meta.url))}");
   }
 `);
 

@@ -3,6 +3,7 @@ import {LitElement, html, css} from "lit";
 import {globalStyles} from "@main/CSS/global.js";
 
 import {availableMinutes, defaultMinutes, formatHour} from "./Utilities/time.js";
+import "./Utilities/font.js";
 
 export const tag = "nurture-module";
 
