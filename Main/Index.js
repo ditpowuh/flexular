@@ -13,12 +13,13 @@ export class IndexModule extends LitElement {
       margin: 0 auto;
       border: 0.25em var(--highlight) solid;
       border-radius: 1em;
-      padding: 2em 2em;
+      padding: 2.5em 2em;
     }
 
     .settings .minititle {
       font-size: 2em;
       text-align: center;
+      margin-top: 0;
     }
 
     .settings button {
@@ -32,6 +33,10 @@ export class IndexModule extends LitElement {
       font-weight: bold;
       cursor: pointer;
       transition: 0.25s background;
+    }
+
+    .settings button:last-of-type {
+      margin-bottom: 0;
     }
 
     .settings button:hover {
@@ -112,7 +117,6 @@ export class IndexModule extends LitElement {
       <div class="wrapper">
         <h1 class="defaulttitle">Home</h1>
         <p>Click the top-left icon to open the sidebar and access apps.</p>
-        <br>
         <div class="settings">
           <h2 class="minititle">Settings For Flexular</h2>
           <div>
