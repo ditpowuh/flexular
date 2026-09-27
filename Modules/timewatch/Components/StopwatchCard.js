@@ -14,20 +14,28 @@ export class StopwatchCard extends LitElement {
     :host {
       display: inline-block;
       background-color: #dddddd;
-      border-radius: 10px;
-      padding: 30px 15%;
-      margin: 10px;
+      border-radius: 0.5em;
+      padding: 2em 15%;
+      margin: 0.5em;
+    }
+
+    :host > div {
+      margin: 1.5em 0;
+    }
+
+    :host > div:first-of-type, :host > div:last-of-type {
+      margin: 0;
     }
 
     button {
-      background-color: #eeeeee;
+      background: #eeeeee;
       color: #595959;
       border: none;
-      width: 90px;
-      padding: 10px 20px;
-      border-radius: 7.5px;
+      width: 7.5em;
+      height: 2.5em;
+      border-radius: 0.5em;
       font-weight: bold;
-      transition: 0.25s background-color;
+      transition: 0.25s background;
       cursor: pointer;
     }
 
@@ -36,38 +44,39 @@ export class StopwatchCard extends LitElement {
     }
 
     button.clearbutton {
-      width: 75px;
-      padding: 5px 0;
-      border-radius: 7.5px;
+      width: 6em;
+      padding: 0.5em 0;
+      border-radius: 0.5em;
     }
 
     input.tag {
-      width: 120px;
-      padding: 5px;
+      width: 7.5rem;
+      padding: 0.5rem;
       border: none;
-      border-radius: 5px;
+      border-radius: 0.5rem;
       text-align: center;
     }
 
     .time {
       display: inline-block;
-      font-size: 50px;
+      width: 20rem;
+      font-size: 3em;
     }
 
     .units {
-      width: 330px;
+      width: 20rem;
       margin: 0 auto;
-      font-size: 12px;
+      font-size: 0.75rem;
       text-align: left;
     }
 
     .units span:nth-child(1) {
-      padding-left: 5px;
-      padding-right: 55px;
+      padding-left: 0.5rem;
+      padding-right: 3.125rem;
     }
 
     .units span:nth-child(2) {
-      padding-right: 40px;
+      padding-right: 2.125rem;
     }
 
     .monofont {
@@ -153,15 +162,19 @@ export class StopwatchCard extends LitElement {
 
   render() {
     return html`
-      <div class="time monofont">${this.time}</div>
-      <div class="units monofont"><span>hours</span><span>minutes</span><span>seconds</span></div>
-      <br><br>
-      <button class="mainbutton" @click=${() => this.toggle()}>${this.running ? "Stop" : "Start"}</button>
-      <button class="restartbutton" @click=${() => this.restart()}>Restart</button>
-      <button class="deletebutton" @click=${() => this.deleteCard()}>Delete</button>
-      <br><br>
-      <input class="tag" type="text" placeholder="Tag" maxlength="20" spellcheck="false" .value=${this.tag} @input=${(event) => this.onTagInput(event)}>
-      <button class="clearbutton" @click=${() => this.clearTag()}>Clear</button>
+      <div>
+        <div class="time monofont">${this.time}</div>
+        <div class="units monofont"><span>hours</span><span>minutes</span><span>seconds</span></div>
+      </div>
+      <div>
+        <button class="mainbutton" @click=${() => this.toggle()}>${this.running ? "Stop" : "Start"}</button>
+        <button class="restartbutton" @click=${() => this.restart()}>Restart</button>
+        <button class="deletebutton" @click=${() => this.deleteCard()}>Delete</button>
+      </div>
+      <div>
+        <input class="tag" type="text" placeholder="Tag" maxlength="20" spellcheck="false" .value=${this.tag} @input=${(event) => this.onTagInput(event)}>
+        <button class="clearbutton" @click=${() => this.clearTag()}>Clear</button>
+      </div>
     `;
   }
 }

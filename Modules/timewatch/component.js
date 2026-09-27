@@ -13,30 +13,26 @@ export class TimewatchModule extends LitElement {
   };
 
   static styles = [globalStyles, css`
-    #title {
-      font-size: 42px;
-    }
-
-    #stopwatches {
+    .stopwatches {
       max-height: 75vh;
       overflow-x: hidden;
       overflow-y: auto;
     }
 
-    #addbutton {
-      margin-top: 20px;
-      background-color: #eeeeee;
+    .addbutton {
+      background: #eeeeee;
       color: #595959;
       border: none;
-      width: 90px;
-      padding: 10px 20px;
-      border-radius: 7.5px;
+      width: 7.5em;
+      height: 2.5em;
+      border-radius: 0.5em;
       font-weight: bold;
-      transition: 0.25s background-color;
+      transition: 0.25s background;
+      margin-top: 1em;
       cursor: pointer;
     }
 
-    #addbutton:hover {
+    .addbutton:hover {
       background-color: #bbbbbb;
     }
   `];
@@ -93,12 +89,11 @@ export class TimewatchModule extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <br><br>
-        <h1 id="title">Timewatch</h1>
-        <div id="stopwatches">
+        <h1 class="defaulttitle">Timewatch</h1>
+        <div class="stopwatches">
           ${this.stopwatches.map((stopwatch) => html`${keyed(stopwatch.id, html`<stopwatch-card .data=${stopwatch.data} @delete-stopwatch=${() => this.removeStopwatch(stopwatch.id)}></stopwatch-card>`)}`)}
         </div>
-        <button id="addbutton" @click=${() => this.addStopwatch()}>Add</button>
+        <button class="addbutton" @click=${() => this.addStopwatch()}>Add</button>
       </div>
     `;
   }

@@ -16,20 +16,16 @@ export class NurtureModule extends LitElement {
   };
 
   static styles = [globalStyles, css`
-    #title {
-      font-size: 42px;
-    }
-
-    hr#beforetask {
+    hr.divider {
       border: none;
-      border-top: 5px solid #eeeeee;
-      border-radius: 5px;
-      width: 450px;
-      margin-bottom: 15px;
+      border-top: 0.25em solid #eeeeee;
+      border-radius: 0.25em;
+      width: 32em;
+      margin-bottom: 1em;
     }
 
     div.enablecheckbox {
-      font-size: 24px;
+      font-size: 1.5em;
     }
 
     input[type="checkbox"].enablecheckbox {
@@ -42,60 +38,70 @@ export class NurtureModule extends LitElement {
 
     .task {
       display: inline-block;
-      background-color: rgba(255, 255, 255, 0.25);
-      padding: 30px 90px 60px 90px;
+      background: rgba(255, 255, 255, 0.25);
+      width: 48em;
+      padding: 3em 2em;
       font-family: "Quicksand", sans-serif;
-      border-radius: 30px;
-    }
-
-    .task * {
-      display: inline-block;
-      vertical-align: middle;
+      border-radius: 2em;
     }
 
     .task h2 {
-      display: block;
-      font-size: 32px;
+      font-size: 2em;
+      margin-top: 0;
     }
 
-    .task #water {
-      width: 40px;
-      font-size: 32px;
-      text-shadow: 0 0 16px rgba(0, 0, 0, 0.75);
+    .task .frequency {
+      margin: 2em 0;
+    }
+
+    .task .frequency > * {
+      display: inline-block;
+    }
+
+    .task .frequency .minutes {
+      width: 3rem;
+      font-size: 2em;
+      text-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
       color: #ffffff;
+      transform: translateY(0.25rem);
     }
 
-    .task input[type="time"] {
-      font-family: "Fira Mono", monospace;
-      padding: 7.5px;
-      border: none;
-      border-radius: 10px;
-      margin: 0 15px;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-      cursor: pointer;
-      color: #666666;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    .task input[type="time"]::-webkit-calendar-picker-indicator, .task input[type="time"]::-webkit-inner-spin-button, .task input[type="time"]::-webkit-clear-button {
-      display: none;
-    }
-
-    .task button.changebutton {
+    .task .frequency button.changebutton {
       font-family: "Quicksand", sans-serif;
       font-weight: bold;
-      margin: 0 10px;
-      width: 30px;
-      height: 30px;
-      border: 2px #777777 solid;
+      margin: 0 0.5em;
+      width: 2em;
+      height: 2em;
+      border: 0.125em rgba(0, 0, 0, 0.25) solid;
       border-radius: 50%;
       color: #777777;
       cursor: pointer;
     }
 
+    .task .timerange {
+      margin: 1em 0;
+    }
+
+    .task .timerange input[type="time"] {
+      font-family: "Fira Mono", monospace;
+      padding: 0.5em;
+      border: none;
+      border-radius: 0.5em;
+      margin: 0 0.25em;
+      box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+      color: #666666;
+      font-size: 1em;
+      font-weight: bold;
+    }
+
+    .task .timerange input[type="time"]::-webkit-calendar-picker-indicator, .task input[type="time"]::-webkit-inner-spin-button, .task input[type="time"]::-webkit-clear-button {
+      display: none;
+    }
+
     .task footer {
-      font-size: 12px;
+      margin-top: 1rem;
+      font-size: 0.75em;
     }
 
     :focus {
@@ -187,27 +193,28 @@ export class NurtureModule extends LitElement {
   render() {
     return html`
       <div class="wrapper">
-        <br><br>
-        <h1 id="title">Nurture</h1>
-        <br>
-        <hr id="beforetask">
+        <h1 class="defaulttitle">Nurture</h1>
+        <hr class="divider">
         <div class="task">
           <h2>Drink Water!</h2>
-          <span>A notification will remind you every</span>
-          <button id="reduceminute" class="changebutton" @click=${() => this.decreaseMinutes()}>&lt;</button>
-          <div id="water">${availableMinutes[this.minutesIndex]}</div>
-          <button id="increaseminute" class="changebutton" @click=${() => this.increaseMinutes()}>&gt;</button>
-          <span>minute(s)!</span>
-          <br><br><br>
-          <span>From</span>
-          <input id="starttime" type="time" step="3600" .value=${this.startTime} @change=${this.handleStartChange}>
-          <span>to</span>
-          <input id="endtime" type="time" step="3600" .value=${this.endTime} @change=${this.handleEndChange}>
-          <span>*</span>
-          <br><br><br>
-          <div class="enablecheckbox">Enabled:</div>
-          <input id="waterenabled" class="enablecheckbox" type="checkbox" .checked=${this.enabled} @change=${this.handleEnabledChange}>
-          <br><br>
+          <div class="frequency">
+            <span>A notification will remind you every</span>
+            <button class="changebutton" @click=${() => this.decreaseMinutes()}>&lt;</button>
+            <div class="minutes">${availableMinutes[this.minutesIndex]}</div>
+            <button class="changebutton" @click=${() => this.increaseMinutes()}>&gt;</button>
+            <span>minute(s)!</span>
+          </div>
+          <div class="timerange">
+            <span>From</span>
+            <input type="time" step="3600" .value=${this.startTime} @change=${this.handleStartChange}>
+            <span>to</span>
+            <input type="time" step="3600" .value=${this.endTime} @change=${this.handleEndChange}>
+            <span>*</span>
+          </div>
+          <div ">
+            <div class="enablecheckbox">Enabled:</div>
+            <input class="enablecheckbox" type="checkbox" .checked=${this.enabled} @change=${this.handleEnabledChange}>
+          </div>
           <footer>*12 AM to 11 PM for full day.</footer>
         </div>
       </div>
