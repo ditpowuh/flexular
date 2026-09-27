@@ -7,16 +7,33 @@ import {globalStyles} from "@main/CSS/global.js";
 export const tag = "template-module";
 
 export class TemplateModule extends LitElement {
+  // Declare reactive properties here, render() re-runs when they change
+  static properties = {
+    count: {}
+  };
 
+  // Put your styles here as if it was like regular CSS!
+  // Also pass in globalStyles if you like (i.e. for .defaulttitle and others)
   static styles = [globalStyles, css`
-    .title {
-      font-size: 3em;
+    .coolbutton {
+      padding: 0.5em;
+      border: none;
+      font-weight: bold;
+      border-radius: 0.5em;
+      cursor: pointer;
+    }
+
+    .coolnumber {
+      font-size: 2em;
+      margin: 1rem;
     }
   `];
 
   // Constructor and super() is a must
   constructor() {
     super();
+    // Define your initial values for your properties here
+    this.count = 0;
 
     console.log("Hello world from component.js!");
   }
@@ -26,16 +43,36 @@ export class TemplateModule extends LitElement {
     ipc.send("TemplateTest");
   }
 
-  // Render HTML here with state and functions 
+  increaseCount() {
+    this.count += 1;
+  }
+
+  resetCount() {
+    this.count = 0;
+  }
+
+  // Render HTML here with state and functions
   render() {
     return html`
       <div class="wrapper">
          <!--Put your title here-->
-        <h1 class="title">Template</h1>
+        <h1 class="defaulttitle">Template</h1>
+
         <!--Put your new stuff here!-->
-        <button @click=${this.triggerMessage}> <!--Here to show off index.js and how triggering functions work!-->
-          Trigger message!
-        </button>
+
+        <!--Example stuff below-->
+        <div style="margin: 1em;">
+          <div>
+            <button class="coolbutton" @click=${this.increaseCount}>Increase count</button>
+            <button class="coolbutton" @click=${this.resetCount}>Reset count</button>
+          </div>
+          <!--This div is reactive, and will change!-->
+          <div class="coolnumber">${this.count}</div>
+        </div>
+        <div style="margin: 3em;">
+          <!--Here to show off index.js and how triggering functions work!-->
+          <button class="coolbutton" @click=${this.triggerMessage}>Trigger message!</button>
+        </div>
       </div>
     `;
   }
