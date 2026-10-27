@@ -14,12 +14,12 @@
   "author": "Ditpowuh",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^44.4.5",
-    "electron-builder": "^26.15.3"
+    "electron": "^44.9.3",
+    "electron-builder": "^26.18.0"
   },
   "dependencies": {
     "@lit-app/state": "^1.0.0",
-    "electron-store": "^11.0.2",
+    "electron-store": "^12.0.0",
     "lit": "^3.3.3"
   },
   "allowScripts": {
@@ -38,14 +38,20 @@
       "Modules/**/*"
     ],
     "win": {
-      "target": ["dir"],
+      "target": [
+        "dir"
+      ],
       "icon": "Main/Icon.png"
     },
     "mac": {
-      "target": ["dir"]
+      "target": [
+        "dir"
+      ]
     },
     "linux": {
-      "target": ["dir"],
+      "target": [
+        "dir"
+      ],
       "icon": "Main/Icon.png"
     },
     "directories": {
