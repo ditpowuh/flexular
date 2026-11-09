@@ -1,4 +1,4 @@
-import {ipcMain} from "electron";
+import {app, ipcMain, powerMonitor} from "electron";
 import schedule from "node-schedule";
 import Store from "electron-store";
 
@@ -8,9 +8,22 @@ const ipc = ipcMain;
 const store = new Store();
 
 const WATER_ICON = "Modules/nurture/Icons/Water Bottle.png";
-const DEFAULT_WATER_REMINDER = {enabled: false, minutes: 30, startTime: 7, endTime: 23};
+const DEFAULT_WATER_REMINDER = {
+  enabled: false,
+  minutes: 30,
+  startTime: 7,
+  endTime: 23
+};
+const IDLE_THRESHOLD_SECONDS = 300;
 
 let waterReminder = null;
+
+function isUserPresent() {
+  if (!app.isReady()) {
+    return false;
+  }
+  return powerMonitor.getSystemIdleState(IDLE_THRESHOLD_SECONDS) === "active";
+}
 
 function scheduleWaterReminder() {
   if (waterReminder !== null) {
@@ -19,7 +32,7 @@ function scheduleWaterReminder() {
   }
   const data = store.get("nurture.waterreminder", DEFAULT_WATER_REMINDER);
   waterReminder = schedule.scheduleJob(`*/${data.minutes} ${data.startTime}-${data.endTime} * * *`, function() {
-    if (store.get("nurture.waterreminder.enabled") === true) {
+    if (store.get("nurture.waterreminder.enabled") === true && isUserPresent()) {
       generateNotification("Drink water!", "It's time to drink some water.", WATER_ICON);
     }
   });
