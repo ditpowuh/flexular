@@ -67,7 +67,7 @@ const createWindowAndTray = () => {
     autoHideMenuBar: true,
     resizable: true,
     maximizable: true,
-    icon: path.join(__dirname, "Main/Icon.png")
+    icon: path.join(__dirname, "Main/Icon.ico")
   });
   window.loadFile("Main/index.html");
 
